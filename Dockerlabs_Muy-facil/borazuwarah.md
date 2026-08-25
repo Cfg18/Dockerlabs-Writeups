@@ -45,7 +45,8 @@ usaremos el siguiente comando: nmap -vvv -T4 -sV -Pn --open -p- 172.17.0.2
 
 ## 2. Inspección del servicio HTTP
 Revisando el servicio http lo primero que encontraremos será una imagen de un huevo kínder
-<img width="902" height="859" alt="03_Imagen_pagina" src="https://github.com/user-attachments/assets/0e6ab902-9de5-47e2-ac31-e008de0e2a5c" />
+
+<img width="763" height="859" alt="03_Imagen_pagina" src="https://github.com/user-attachments/assets/5be6c9df-d124-40a5-8edd-117b99b7d44a" />
 
 ## 3. Estenografía
 Usando la herramienta exiftool inspeccionamos los metadatos de la imagen, encontrando información sensible, un nombre de usuario
