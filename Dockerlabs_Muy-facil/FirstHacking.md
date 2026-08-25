@@ -11,7 +11,7 @@
 Se realizó la auditoría de seguridad sobre la máquina objetivo identificando el servicio FTP activo. Mediante el análisis de la versión del servicio, se detectó una vulnerabilidad conocida como CVE-2011-2523 (puerta trasera en vsftpd 2.3.4). Aprovechando esta brecha, se inyectó una secuencia de activación en el nombre de usuario durante la autenticación FTP, lo que abrió de forma inmediata una consola con privilegios de superusuario en el puerto 6200, permitiendo el acceso total a la máquina como root en un solo paso.
 
 ## Despliegue
-Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar" 
+Después de descomprimir el zip de la máquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar" 
 
 <img width="823" height="211" alt="01_Despliegue" src="https://github.com/user-attachments/assets/f3e38b46-d969-49f1-9cd6-fa30a439f721" />
 
@@ -55,10 +55,10 @@ Ya conociendo la vulnerabilidad vamos a explotarla
 
 <img width="954" height="188" alt="03_ftp" src="https://github.com/user-attachments/assets/df54a5f4-1951-4a1c-8a71-588821255b4e" />
 
-Después de introducir un usuario con :) y una contraseña aleatoria se abrirá el puerto en la maquina victima
+Después de introducir un usuario con :) y una contraseña aleatoria se abrirá el puerto en la maquina víctima
 
 ## 3. Conectarnos a la maquina victima
-Con netcat nos conectamos a la maquina victima atraves del puerto 6200
+Con netcat nos conectamos a la maquina victima a través del puerto 6200
 
 <img width="658" height="105" alt="04_conectarnos-nc" src="https://github.com/user-attachments/assets/6a2c65ad-ccd9-4589-89ba-66b91069dea2" />
 
