@@ -11,7 +11,7 @@
 Se realizó la auditoría de seguridad sobre la máquina objetivo identificando dos puertos abiertos: HTTP (80) y SSH (22).
 Mediante el análisis de metadatos EXIF con exiftool en una imagen alojada en la web, se descubrió el usuario del sistema (borazuwarah).
 Posteriormente, se ejecutó un ataque de fuerza bruta con Hydra sobre el servicio SSH para obtener la contraseña de acceso.
-Una vez dentro del sistema, se auditó la configuración de privilegios mediante sudo -L, detectando que el usuario podía ejecutar
+Una vez dentro del sistema, se auditó la configuración de privilegios, detectando que el usuario podía ejecutar
 /bin/bash con permisos de superusuario sin contraseña, permitiendo la escalada directa a root
 
 ## Despliegue
