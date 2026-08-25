@@ -1,16 +1,1 @@
-# Writeup: FirstHacking
-
-* **Autor:** Cfg18
-* **Plataforma:** DockerLabs
-* **Dificultad:** Muy Fácil
-* **SO:** Linux
-* **Categoría:** Web / Linux
-* **Fecha:** 25/08/2026
-
-# Resumen Ejecutivo (TL;DR)
-asdad
-
-
-## Despliegue
-Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar"
 
