@@ -11,7 +11,7 @@
 Se realizó la auditoría de seguridad sobre la máquina objetivo identificando el servicio FTP activo. Mediante el análisis de la versión del servicio, se detectó una vulnerabilidad conocida como CVE-2011-2523 (puerta trasera en vsftpd 2.3.4). Aprovechando esta brecha, se inyectó una secuencia de activación en el nombre de usuario durante la autenticación FTP, lo que abrió de forma inmediata una consola con privilegios de superusuario en el puerto 6200, permitiendo el acceso total a la máquina como root en un solo paso.
 
 ## Despliegue
-Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh borazuwaractf.tar" 
+Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar" 
 
 <img width="823" height="211" alt="01_Despliegue" src="https://github.com/user-attachments/assets/f3e38b46-d969-49f1-9cd6-fa30a439f721" />
 
@@ -25,7 +25,7 @@ usaremos el siguiente comando: nmap -vvv -T4 -sV -Pn --open -p- 172.17.0.2
 <img width="1182" height="736" alt="02_nmap" src="https://github.com/user-attachments/assets/37f178fd-46b6-4051-b5fe-4384b315ed5d" />
 
 
-Podemos ver que el único puerto abierto FTP (21), investigamos la versión del mismo y descubrimos que tiene una vulnerabilidad conocida.
+Podemos ver que el único puerto abierto es el FTP (21), investigamos la versión del mismo y descubrimos que tiene una vulnerabilidad conocida.
   
 ```bash
 -vvv = Muestra los resultados en pantalla en tiempo real a medida que los descubre
@@ -71,7 +71,7 @@ Ya conectados ejecutaremos un whoami para verificar que somos root en la maquina
 
 Podemos observar que somos root
 
-## 5. Conclusion
+## 5. Conclusión
 
 En primer lugar, el vector de entrada demuestra el grave peligro de mantener software obsoleto o con vulnerabilidades críticas en los sistemas. La presencia de la famosa puerta trasera en el servicio FTP (CVE-2011-2523) permitió saltarse por completo los mecanismos tradicionales de autenticación y enumeración de usuarios simplemente enviando un carácter específico (:)) en el campo de inicio de sesión.
 
