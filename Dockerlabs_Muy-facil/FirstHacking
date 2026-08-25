@@ -7,5 +7,10 @@
 * **Categoría:** Web / Linux
 * **Fecha:** 25/08/2026
 
-La maquina ha sido vulnerada con exito
+# Resumen Ejecutivo (TL;DR)
+aasdadaddadad
+
+
+## Despliegue
+Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar"
 
