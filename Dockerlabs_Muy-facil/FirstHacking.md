@@ -55,10 +55,10 @@ Ya conociendo la vulnerabilidad vamos a explotarla
 
 <img width="954" height="188" alt="03_ftp" src="https://github.com/user-attachments/assets/df54a5f4-1951-4a1c-8a71-588821255b4e" />
 
-Después de introducir un usuario con :) y una contraseña aleatoria se abrirá el puerto
+Después de introducir un usuario con :) y una contraseña aleatoria se abrirá el puerto en la maquina victima
 
 ## 3. Conectarnos a la maquina victima
-Con netcat nos conectamos a la maquina victima atreves del puerto 6200
+Con netcat nos conectamos a la maquina victima atraves del puerto 6200
 
 <img width="658" height="105" alt="04_conectarnos-nc" src="https://github.com/user-attachments/assets/6a2c65ad-ccd9-4589-89ba-66b91069dea2" />
 
@@ -73,7 +73,7 @@ Podemos observar que somos root
 
 ## 5. Conclusión
 
-En primer lugar, el vector de entrada demuestra el grave peligro de mantener software obsoleto o con vulnerabilidades críticas en los sistemas. La presencia de la famosa puerta trasera en el servicio FTP (CVE-2011-2523) permitió saltarse por completo los mecanismos tradicionales de autenticación y enumeración de usuarios simplemente enviando un carácter específico (:)) en el campo de inicio de sesión.
+En primer lugar, el vector de entrada demuestra el grave peligro de mantener software obsoleto o con vulnerabilidades críticas en los sistemas. La presencia de la famosa puerta trasera en el servicio FTP (CVE-2011-2523) permitió saltarse por completo los mecanismos tradicionales de autenticación y enumeración de usuarios simplemente enviando un carácter específico :) en el campo de inicio de sesión.
 
 Por último, esta vulnerabilidad resalta la importancia de actualizar constantemente los servicios del sistema operativo y deshabilitar o desinstalar demonios antiguos que ya no sean estrictamente necesarios, ya que un solo servicio mal configurado o vulnerable puede comprometer toda la seguridad de la máquina de forma directa e inmediata.
 
