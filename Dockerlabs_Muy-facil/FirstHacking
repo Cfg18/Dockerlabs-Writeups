@@ -14,4 +14,3 @@ asdad
 ## Despliegue
 Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh FirstHacking.tar"
 
-
