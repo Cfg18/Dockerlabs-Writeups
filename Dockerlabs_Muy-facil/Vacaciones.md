@@ -73,6 +73,9 @@ Usamos Curl para obtener mas informacion del servicio web y encontramos un mensa
 
 <img width="950" height="248" alt="06_Curl" src="https://github.com/user-attachments/assets/9363559f-c548-4b47-89a4-dc0e0da4245c" />
 
+```bash
+-i = Incluye tambien las  cabeceras y el body de la pagina
+```
 
 ## 5. Fuerza bruta
 
