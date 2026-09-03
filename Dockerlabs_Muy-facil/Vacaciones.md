@@ -8,11 +8,9 @@
 * **Fecha:** 25/08/2026
 
 ## Resumen Ejecutivo (TL;DR)
-Se realizó la auditoría de seguridad sobre la máquina objetivo identificando dos puertos abiertos: HTTP (80) y SSH (22).
-Mediante el análisis de metadatos EXIF con exiftool en una imagen alojada en la web, se descubrió el usuario del sistema (borazuwarah).
-Posteriormente, se ejecutó un ataque de fuerza bruta con Hydra sobre el servicio SSH para obtener la contraseña de acceso.
-Una vez dentro del sistema, se auditó la configuración de privilegios, detectando que el usuario podía ejecutar
-/bin/bash con permisos de superusuario sin contraseña, permitiendo la escalada directa a root
+Se realizó la auditoría de seguridad sobre la máquina objetivo identificando los puertos abiertos correspondientes a HTTP (80) y SSH (22). Tras realizar un análisis de enumeración web con gobuster y obtener información relevante mediante curl, se descubrió un mensaje oculto/comentario con pistas entre desarrolladores. Posteriormente, se ejecutó un ataque de fuerza bruta con hydra sobre el servicio SSH utilizando las pistas obtenidas para dar con el usuario y la contraseña de acceso inicial (camilo).
+
+Una vez dentro del sistema como usuario estándar, se inspeccionaron los buzones de correo locales en la ruta /var/mail, donde se encontraron credenciales adicionales correspondientes al usuario juan. Tras acceder con este nuevo usuario y auditar los permisos de sudo , se detectó que juan podía ejecutar el intérprete de comandos ruby con privilegios de superusuario sin requerir contraseña. Finalmente, mediante un comando de ejecución de procesos en Ruby, se logró la escalada de privilegios directa a root.
 
 ## Despliegue
 Después de descomprimir el zip de la maquina la desplegaremos usando "sudo bash autodeploy.sh Vacaciones.tar" 
@@ -56,7 +54,7 @@ Usamos gobuster para enumerar el sitio web
 <img width="1316" height="512" alt="04_gobuster" src="https://github.com/user-attachments/assets/782855ba-74fb-4bf2-96d4-f8409e0465f4" />
 
 ```bash
--dir = Seleccionamos el modo enumeración de directorios y archivos
+dir = Seleccionamos el modo enumeración de directorios y archivos
 
 -u = Especifica la url de la pagina que vamos a escanear
 
@@ -105,7 +103,7 @@ Entramos como el usuario "juan" y ejecutamos "sudo -l" , mostrandonos que el usu
 Como ya sabemos que el usuario juan puede ejecutar ruby, solamente tendremos que ejecutar
 
 ```bash
-sudo ruby -e ‘exec"/bin/bash"’
+sudo ruby -e 'exec"/bin/bash"'
 ```
 <img width="872" height="95" alt="11_rubyvuln" src="https://github.com/user-attachments/assets/c49c79cb-ea15-41e3-a0f7-fd0370a077c3" />
 
@@ -113,10 +111,10 @@ Despues de esto, ya tendremos permisos de superusuario
 
 ## 9. Conclusion
 
-En primer lugar, el vector de entrada demuestra el peligro de la fuga de información a través de recursos públicos. Mantener datos sensibles guardados en los metadatos de las imágenes alojadas en la web permitió obtener un nombre de usuario válido de manera directa, omitiendo la necesidad de realizar una enumeración web agresiva. A esto se le suma el uso de una contraseña extremadamente débil en el servicio SSH, lo que dejó la puerta abierta a un ataque de fuerza bruta exitoso en cuestión de segundos utilizando un diccionario estándar.
+En primer lugar, el vector de entrada demuestra el peligro de exponer información y pistas en directorios o respuestas HTTP mal protegidas o comentadas en el código web. Combinar esto con la reutilización de credenciales débiles o fácilmente adivinables facilitó que un atacante pudiera superar el servicio SSH mediante un ataque de fuerza bruta estándar.
 
-Por último, el factor crítico que facilitó la toma del control total de la máquina fue una grave mala configuración en la directiva de sudoers. Otorgar permisos a un usuario sin privilegios para ejecutar una shell interactiva como superusuario , permitiendo una escalada de privilegios a root inmediata.
+Asimismo, la vulnerabilidad derivada del almacenamiento de información sensible en los buzones locales del sistema (/var/mail), permitió un movimiento lateral limpio hacia otro usuario del sistema.
 
-La maquina ha sido vulnerada con exito
+Por último, el factor crítico que propició la toma de control total de la máquina fue una mala configuración severa en los permisos del archivo sudoers. Permitir que un usuario sin privilegios ejecute un lenguaje de scripting potente como Ruby con permisos de superusuario sin restricciones ni contraseñas habilitó una vía directa y rápida de escalada de privilegios a root.
 
-
+La máquina ha sido vulnerada con éxito.
